@@ -1,4 +1,155 @@
-# ai-data-broker-remover
+# AI Data Broker Remover
+
+A modular Python tool to help remove personal data from data brokers.
+
+## Features
+
+- **Modular Architecture**: Each data broker is implemented as a separate module
+- **Async Support**: Concurrent operations for faster processing
+- **CLI Interface**: Easy-to-use command-line interface
+- **Extensible**: Simple to add new data brokers
+- **Type Safe**: Full type hints throughout
+
+## Installation
+
+```bash
+# Clone the repository
+git clone <your-repo-url>
+cd ai-data-broker-remover
+
+# Install dependencies with uv
+uv sync
+```
+
+## Usage
+
+### CLI Interface
+
+```bash
+# List available data brokers
+python -m src.ai_data_broker_remover.cli list
+
+# Search for records at a specific broker
+python -m src.ai_data_broker_remover.cli search whitepages \
+  --first-name "John" --last-name "Doe" --email "john@example.com"
+
+# Submit removal requests to all brokers
+python -m src.ai_data_broker_remover.cli submit \
+  --first-name "John" --last-name "Doe" --email "john@example.com"
+
+# Submit to a specific broker
+python -m src.ai_data_broker_remover.cli submit --broker spokeo \
+  --first-name "John" --last-name "Doe" --email "john@example.com"
+```
+
+### Programmatic Usage
+
+```python
+import asyncio
+from src.ai_data_broker_remover import DataBrokerManager, PersonalInfo
+from src.ai_data_broker_remover.brokers import WhitePages
+
+async def main():
+    # Create manager and register brokers
+    manager = DataBrokerManager()
+    manager.register_broker(WhitePages())
+    
+    # Create personal info
+    info = PersonalInfo(
+        first_name="John",
+        last_name="Doe",
+        email="john@example.com"
+    )
+    
+    # Submit removal request
+    requests = await manager.submit_removal_to_all(info)
+    print(f"Submitted {len(requests)} removal requests")
+
+asyncio.run(main())
+```
+
+### Run the Demo
+
+```bash
+python examples/demo.py
+```
+
+## Project Structure
+
+```
+ai-data-broker-remover/
+├── src/ai_data_broker_remover/     # Main package
+│   ├── __init__.py                 # Package exports
+│   ├── cli.py                      # Command-line interface
+│   ├── core/                       # Core functionality
+│   │   ├── base.py                 # Abstract classes & models
+│   │   └── manager.py              # Broker coordination
+│   └── brokers/                    # Data broker implementations
+│       ├── whitepages.py
+│       ├── spokeo.py
+│       └── peoplefinder.py
+├── examples/                       # Usage examples
+│   └── demo.py                     # Full demo script
+├── tests/                          # Test suite
+├── pyproject.toml                  # Project configuration
+├── uv.lock                         # Locked dependencies
+└── README.md                       # This file
+```
+
+## Adding New Data Brokers
+
+1. Create a new module in `src/ai_data_broker_remover/brokers/`
+2. Inherit from the `DataBroker` base class
+3. Implement the required methods:
+   - `search_records()`
+   - `submit_removal_request()`
+   - `check_removal_status()`
+4. Register it in `brokers/__init__.py`
+
+Example:
+
+```python
+from ..core.base import DataBroker, PersonalInfo, RemovalRequest, RemovalStatus
+
+class NewBroker(DataBroker):
+    def __init__(self):
+        super().__init__(name="NewBroker", url="https://newbroker.com")
+    
+    async def search_records(self, personal_info: PersonalInfo):
+        # Implementation here
+        pass
+    
+    async def submit_removal_request(self, personal_info: PersonalInfo):
+        # Implementation here 
+        pass
+    
+    async def check_removal_status(self, request: RemovalRequest):
+        # Implementation here
+        pass
+```
+
+## Development
+
+```bash
+# Install development dependencies
+uv sync --dev
+
+# Run tests
+uv run pytest
+
+# Format code
+uv run black .
+
+# Lint code
+uv run ruff check .
+
+# Type checking
+uv run mypy src/
+```
+
+## License
+
+MIT License - see LICENSE file for details.
 
 Opensource AI data broker removal service.
 
