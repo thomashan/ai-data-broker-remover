@@ -1,6 +1,14 @@
-# ai-data-broker-remover
+# AI Data Broker Remover
 
-Opensource AI data broker removal service.
+A modular Python tool to help remove personal data from data brokers.
+
+## Features
+
+- **Modular Architecture**: Each data broker is implemented as a separate module
+- **Async Support**: Concurrent operations for faster processing
+- **CLI Interface**: Easy-to-use command-line interface
+- **Extensible**: Simple to add new data brokers
+- **Type Safe**: Full type hints throughout
 
 ## Use AI agents and RAG to remove personal data
 
@@ -9,6 +17,7 @@ This project is to experiment with removing data from the data brokers using AI 
 ### Prerequisites
 
 Before you begin, ensure you have `make` installed on your system. Most Unix-like operating systems (Linux, macOS) come with `make` pre-installed.
+
 ## Project setup
 
 Since this project is in alpha we suggest using a sandboxed Python environment to explore its possibilities.
@@ -48,13 +57,14 @@ conda activate ai-data-broker-remover
 ```
 
 ### Supported Platforms
+
 - **macOS:** Uses Homebrew (brew install --cask miniforge)
 - **Linux:** Downloads and installs from GitHub releases for x86_64 and aarch64 architectures.
-  - Ubuntu/Debian (apt-get)
-  - RHEL/CentOS (yum)
-  - Fedora (dnf)
-  - Arch Linux (pacman)
-  - openSUSE (zypper)
+    - Ubuntu/Debian (apt-get)
+    - RHEL/CentOS (yum)
+    - Fedora (dnf)
+    - Arch Linux (pacman)
+    - openSUSE (zypper)
 
 ## Data Broker Remover
 

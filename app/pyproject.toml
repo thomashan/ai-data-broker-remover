@@ -2,6 +2,53 @@
 name = "app-workspace"
 version = "0.1.0"
 requires-python = "==3.13"
+description = "A modular Python tool to help scan personal data from data brokers"
+readme = "README.md"
+authors = [
+    { name = "Thomas Han" },
+]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: End Users/Desktop",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.13",
+    "Topic :: Internet :: WWW/HTTP",
+    "Topic :: Security",
+    "Topic :: Utilities",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+    "Topic :: Internet :: WWW/HTTP :: Dynamic Content",
+    "Topic :: System :: Systems Administration",
+    "Topic :: Office/Business :: Automation",
+    "Topic :: Other/Nonlisted Topic",
+]
+keywords = [
+    "agent-based-automation",
+    "agentic-automation",
+    "agentic-automation-systems",
+    "agentic-systems",
+    "agentic-workflows",
+    "agents",
+    "ai",
+    "artificial-intelligence",
+    "automation",
+    "ccpa",
+    "data-broker",
+    "data-privacy",
+    "data-protection",
+    "data-removal",
+    "data-security",
+    "gdpr",
+    "privacy",
+    "web-scraping"
+]
+
+[project.urls]
+Homepage = "https://github.com/thomashan/ai-data-broker-remover"
+Repository = "https://github.com/thomashan/ai-data-broker-remover"
+Issues = "https://github.com/thomashan/ai-data-broker-remover/issues"
 
 [tool.uv.workspace]
 members = [
