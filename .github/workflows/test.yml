@@ -1,0 +1,73 @@
+name: Miniforge Installation Test
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  test-installation:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-latest, macos-latest]
+
+    defaults:
+      run:
+        # Use a login shell to ensure conda is available after initialization
+        shell: bash -l {0}
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+
+    - name: Set up QEMU for ARM64 (Linux only)
+      if: runner.os == 'Linux'
+      uses: docker/setup-qemu-action@v3
+      with:
+        platforms: all
+
+    - name: Run make setup (Install Miniforge)
+      # Override default shell for this step as conda is not yet installed
+      shell: bash
+      run: make setup
+
+    - name: Initialize Conda (Linux/macOS)
+      run: |
+        # Set path to the correct conda executable based on OS
+        if [[ "${{ runner.os }}" == "Linux" ]]; then
+          CONDA_PATH="$HOME/miniforge3/bin"
+        elif [[ "${{ runner.os }}" == "macOS" ]]; then
+          # On macOS, Homebrew installs it to /opt/homebrew/bin
+          CONDA_PATH="/opt/homebrew/bin"
+        fi
+        
+        # Prepend the new conda path for this step and for subsequent steps
+        echo "$CONDA_PATH" >> $GITHUB_PATH
+        export PATH="$CONDA_PATH:$PATH"
+        
+        # Initialize the correct conda installation
+        conda init bash
+
+    - name: Verify Miniforge Installation
+      run: |
+        echo "Conda executable: $(which conda)"
+        conda --version
+        conda info | grep "conda-forge"
+
+    - name: Create Conda Environment and Run Tests
+      run: |
+        make create-conda-env
+        
+        # Activate the environment to run tests
+        conda activate ai-data-broker-remover
+        
+        echo "--- Verifying environment ---"
+        conda env list | grep "ai-data-broker-remover"
+        python --version | grep "3.13"
+        
+        echo "--- Environment is activated. Running tests... ---"
+        # Add your actual test commands here
