@@ -1,0 +1,3 @@
+# Privacy Bee
+
+Privacy Bee is a service that helps remove personal information from data brokers. While it does not provide a public, exhaustive list of all the data brokers it covers, it states that it targets over 885 data brokers and people search sites for data removal. Other sources mention that Privacy Bee scans more than 430 broker sites and claims to cover over 800 or 879+ sites. Users of the service can view the specific sites where their data is exposed through their Privacy Bee dashboard.
