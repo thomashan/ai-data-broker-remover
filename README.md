@@ -2,6 +2,66 @@
 
 Opensource AI data broker removal service.
 
+## Use AI agents and RAG to remove personal data
+
+This project is to experiment with removing data from the data brokers using AI agents and RAG.
+
+### Prerequisites
+
+Before you begin, ensure you have `make` installed on your system. Most Unix-like operating systems (Linux, macOS) come with `make` pre-installed. If you are on Windows, you may need to install it separately (e.g., via Chocolatey, Scoop, or by installing the Windows Subsystem for Linux).
+
+## Project setup
+
+Since this project is in alpha we suggest using a sandboxed Python environment to explore its possibilities.
+
+### Step 1: Install Miniforge
+
+This project uses Miniforge for managing Python environments. To install it, run:
+
+```bash
+make setup
+```
+
+This command will check if Miniforge is already installed and, if not, will install it using the appropriate method for your operating system.
+
+After the installation is complete, you **must** restart your terminal or run the following command to initialize the conda environment in your current shell session:
+
+```bash
+export PATH="$HOME/miniforge3/bin:$PATH" && conda init && eval "$$(conda shell.bash hook)"
+```
+
+### Step 2: Create the Conda Environment
+
+Once you have restarted your terminal or run the `eval` command, you can create the conda environment for this project:
+
+```bash
+make create-conda-env
+```
+
+This will create a conda environment named `ai-data-broker-remover` with Python 3.13.
+
+### Step 3: Activate the Conda Environment
+
+To activate the newly created environment, run:
+
+```bash
+conda activate ai-data-broker-remover
+```
+
+### Supported Platforms
+- **macOS:** Uses Homebrew (brew install --cask miniforge)
+- **Linux:** Downloads and installs from GitHub releases for x86_64 and aarch64 architectures.
+  - Ubuntu/Debian (apt-get)
+  - RHEL/CentOS (yum)
+  - Fedora (dnf)
+  - Arch Linux (pacman)
+  - openSUSE (zypper)
+- **Windows:** Uses available package managers or downloads installer
+  - Windows Package Manager (winget)
+  - Chocolatey (choco)
+  - Scoop (scoop)
+  - Manual download fallback
+
 ## Data Broker Remover
 
 From https://deletemyinfo.com/best-data-removal-services-of-2025/
@@ -34,13 +94,10 @@ From https://deletemyinfo.com/best-data-removal-services-of-2025/
 | 24   | McAfee Cleanup      | Data removal + antivirus                 | $199.99/year      |
 | 25   | Avast BreachGuard   | Simple removal + breach alerts           | $43.99/year       |
 
-## Use AI agents and RAG to remove personal data
-
-This project is to experiment with removing data from the data brokers using AI agents and RAG.
-
 ## DeleteMyInfo
 
 **Specs to Emulate DeleteMyInfo:**
+
 1. **Full Coverage Approach**: Target comprehensive list of 750+ data brokers including major and obscure sites
 2. **Human Verification**: Implement manual verification step for each removal request
 3. **Custom Opt-outs**: Create personalized removal requests based on individual profiles
@@ -53,6 +110,7 @@ This project is to experiment with removing data from the data brokers using AI 
 ## DeleteMe
 
 **Specs to Emulate DeleteMe:**
+
 1. **Custom Opt-outs**: Personalized removal requests tailored to individual data footprints
 2. **Privacy Advisor**: Provide expert guidance on privacy best practices
 3. **Quarterly Monitoring**: Regular scans to detect if data reappears
@@ -65,6 +123,7 @@ This project is to experiment with removing data from the data brokers using AI 
 ## Incogni
 
 **Specs to Emulate Incogni:**
+
 1. **Automated Removal**: Fully automated system for marketing broker removals
 2. **Marketing Broker Focus**: Target data brokers used primarily for marketing purposes
 3. **Bulk Processing**: Process multiple removal requests simultaneously
@@ -77,6 +136,7 @@ This project is to experiment with removing data from the data brokers using AI 
 ## Optery
 
 **Specs to Emulate Optery:**
+
 1. **Predictive Link Scanning**: AI-powered detection of potential data broker profiles
 2. **Screenshot Capture**: Automatic screenshots of profiles before removal
 3. **Smart Scanning**: Predictive algorithms to find hidden profiles
@@ -89,6 +149,7 @@ This project is to experiment with removing data from the data brokers using AI 
 ## Onerep
 
 **Specs to Emulate Onerep:**
+
 1. **Google Search Cleanup**: Focus on removing data that appears in Google search results
 2. **Search Result Monitoring**: Regular monitoring of search results for personal data
 3. **Profile Removal**: Target people search engines and background check sites
@@ -101,6 +162,7 @@ This project is to experiment with removing data from the data brokers using AI 
 ## Kanary
 
 **Specs to Emulate Kanary:**
+
 1. **Opt-out Templates**: Pre-built templates for different types of data brokers
 2. **Comprehensive Reporting**: Detailed reports on removal progress and status
 3. **Template Library**: Extensive collection of removal request templates
@@ -113,6 +175,7 @@ This project is to experiment with removing data from the data brokers using AI 
 ## Privacy Bee
 
 **Specs to Emulate Privacy Bee:**
+
 1. **Non-public Broker Focus**: Target lesser-known and non-public data brokers
 2. **Deep Web Scanning**: Search for data on non-indexed and private databases
 3. **Specialized Removal**: Handle complex removal cases requiring special procedures
@@ -125,6 +188,7 @@ This project is to experiment with removing data from the data brokers using AI 
 ## EasyOptOuts
 
 **Specs to Emulate EasyOptOuts:**
+
 1. **Budget-Friendly Service**: Cost-effective solution for basic data removal
 2. **Essential Coverage**: Target most common and high-impact data brokers
 3. **Simple Process**: Streamlined removal process with minimal user input
@@ -137,6 +201,7 @@ This project is to experiment with removing data from the data brokers using AI 
 ## PrivacyPros
 
 **Specs to Emulate PrivacyPros:**
+
 1. **Genealogy Site Removal**: Specialized removal from ancestry and genealogy websites
 2. **Voter Database Removal**: Focus on removing data from voter registration databases
 3. **Public Record Cleanup**: Target government and public record databases
@@ -149,6 +214,7 @@ This project is to experiment with removing data from the data brokers using AI 
 ## Confidently
 
 **Specs to Emulate Confidently:**
+
 1. **Variety Coverage**: Target diverse types of data broker sites
 2. **Flexible Service**: Adaptable approach for different user needs
 3. **Multi-Site Scanning**: Search across various types of databases
@@ -161,6 +227,7 @@ This project is to experiment with removing data from the data brokers using AI 
 ## Erase Me
 
 **Specs to Emulate Erase Me:**
+
 1. **Visual Exposure Reports**: Detailed visual reports showing data exposure
 2. **Screenshot Documentation**: Comprehensive before/after visual proof
 3. **Visual Dashboard**: Image-rich interface showing removal progress
@@ -173,6 +240,7 @@ This project is to experiment with removing data from the data brokers using AI 
 ## DataSeal
 
 **Specs to Emulate DataSeal:**
+
 1. **Data Breach Alerts**: Real-time notifications of data breaches affecting users
 2. **Breach Monitoring**: Continuous monitoring of known breach databases
 3. **Alert System**: Immediate notifications when user data appears in breaches
@@ -185,6 +253,7 @@ This project is to experiment with removing data from the data brokers using AI 
 ## HelloPrivacy
 
 **Specs to Emulate HelloPrivacy:**
+
 1. **Simple Dashboard**: Clean, easy-to-use interface for tracking progress
 2. **Breach Alerts**: Notifications when user data appears in breaches
 3. **Streamlined Process**: Simplified removal workflow with minimal user input
@@ -197,6 +266,7 @@ This project is to experiment with removing data from the data brokers using AI 
 ## PurePrivacy
 
 **Specs to Emulate PurePrivacy:**
+
 1. **Social Media Privacy Audit**: Comprehensive review of social media privacy settings
 2. **Platform Analysis**: Examine privacy settings across multiple social platforms
 3. **Privacy Recommendations**: Suggest optimal privacy configurations
@@ -209,6 +279,7 @@ This project is to experiment with removing data from the data brokers using AI 
 ## MyDataRemoval
 
 **Specs to Emulate MyDataRemoval:**
+
 1. **Custom Report Delivery**: Flexible options for receiving progress reports
 2. **Personalized Reporting**: Tailored reports based on user preferences
 3. **Multiple Formats**: Offer reports in various formats (PDF, email, dashboard)
@@ -221,6 +292,7 @@ This project is to experiment with removing data from the data brokers using AI 
 ## PrivacyHawk
 
 **Specs to Emulate PrivacyHawk:**
+
 1. **Email Inbox Scanning**: Analyze emails for privacy risks and data sharing
 2. **Email Monitoring**: Continuous scanning of user email accounts
 3. **Privacy Risk Detection**: Identify potential privacy threats in emails
@@ -233,6 +305,7 @@ This project is to experiment with removing data from the data brokers using AI 
 ## Guaranteed Removals
 
 **Specs to Emulate Guaranteed Removals:**
+
 1. **Pay-After-Removal Model**: Payment only after successful data removal
 2. **Results-Based Pricing**: Pricing tied to actual removal success
 3. **Performance Guarantee**: Commit to achieving specific removal results
@@ -245,6 +318,7 @@ This project is to experiment with removing data from the data brokers using AI 
 ## ReputationDefender
 
 **Specs to Emulate ReputationDefender:**
+
 1. **Reputation Report Card**: Comprehensive analysis of online reputation
 2. **Online Reputation Management**: Full-service reputation monitoring and improvement
 3. **Content Removal**: Remove negative or unwanted online content
@@ -257,6 +331,7 @@ This project is to experiment with removing data from the data brokers using AI 
 ## BrandYourself
 
 **Specs to Emulate BrandYourself:**
+
 1. **DIY Reputation Cleanup**: Self-service tools for reputation management
 2. **User-Friendly Tools**: Easy-to-use interface for non-technical users
 3. **Step-by-Step Guidance**: Clear instructions for reputation improvement
@@ -269,6 +344,7 @@ This project is to experiment with removing data from the data brokers using AI 
 ## Aura
 
 **Specs to Emulate Aura:**
+
 1. **Digital Security Suite**: Comprehensive protection including identity theft, VPN, and antivirus
 2. **Identity Monitoring**: Track use of personal information across the web
 3. **Financial Monitoring**: Monitor bank accounts and credit reports for suspicious activity
@@ -281,6 +357,7 @@ This project is to experiment with removing data from the data brokers using AI 
 ## Malwarebytes
 
 **Specs to Emulate Malwarebytes:**
+
 1. **Antivirus + Privacy**: Combined malware protection and privacy services
 2. **Malware Detection**: Advanced threat detection and removal
 3. **Privacy Protection**: Block tracking and protect personal data
@@ -293,6 +370,7 @@ This project is to experiment with removing data from the data brokers using AI 
 ## IDX
 
 **Specs to Emulate IDX:**
+
 1. **Identity Theft Recovery**: Comprehensive support for identity theft victims
 2. **Data Removal**: Remove personal information from data broker sites
 3. **Credit Monitoring**: Track changes to credit reports and scores
@@ -305,6 +383,7 @@ This project is to experiment with removing data from the data brokers using AI 
 ## Voiply
 
 **Specs to Emulate Voiply:**
+
 1. **Phone + Data Bundle**: Combined phone privacy and data removal services
 2. **Phone Number Protection**: Remove phone numbers from data broker sites
 3. **Call Blocking**: Block unwanted calls and spam
@@ -317,6 +396,7 @@ This project is to experiment with removing data from the data brokers using AI 
 ## McAfee Cleanup
 
 **Specs to Emulate McAfee Cleanup:**
+
 1. **Data Removal + Antivirus**: Combined security and privacy protection
 2. **Personal Data Cleanup**: Remove personal information from online databases
 3. **Security Software**: Full antivirus and anti-malware protection
@@ -329,6 +409,7 @@ This project is to experiment with removing data from the data brokers using AI 
 ## Avast BreachGuard
 
 **Specs to Emulate Avast BreachGuard:**
+
 1. **Simple Removal Process**: Streamlined approach to data broker removal
 2. **Breach Alerts**: Immediate notifications of data breaches
 3. **Automatic Scanning**: Regular automated scans for personal data
