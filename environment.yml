@@ -1,0 +1,7 @@
+name: ai-data-broker-remover
+channels:
+  - conda-forge
+dependencies:
+  - pytest=8.4.1
+  - python=3.13
+  - uv=0.8.2

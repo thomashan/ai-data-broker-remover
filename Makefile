@@ -69,16 +69,17 @@ setup:
 
 # Create conda environment with Python 3.13
 create-conda-env:
-	@echo "Creating conda environment 'ai-data-broker-remover' with Python 3.13..."
+	@echo "Creating conda environment 'ai-data-broker-remover' from environment.yml..."
 	@if conda env list | grep -q "ai-data-broker-remover"; then \
 		echo "✅ Environment 'ai-data-broker-remover' already exists"; \
 	else \
 		echo "Creating new environment..."; \
-		conda create -n ai-data-broker-remover python=3.13 -y; \
+		conda env create -n ai-data-broker-remover -f environment.yml; \
 		echo "✅ Environment 'ai-data-broker-remover' created successfully"; \
 		echo "To activate the environment, run:"; \
 		echo "  conda activate ai-data-broker-remover"; \
 	fi
+
 
 # Activate conda environment
 activate-conda-env: create-conda-env

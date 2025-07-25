@@ -8,8 +8,7 @@ This project is to experiment with removing data from the data brokers using AI 
 
 ### Prerequisites
 
-Before you begin, ensure you have `make` installed on your system. Most Unix-like operating systems (Linux, macOS) come with `make` pre-installed. If you are on Windows, you may need to install it separately (e.g., via Chocolatey, Scoop, or by installing the Windows Subsystem for Linux).
-
+Before you begin, ensure you have `make` installed on your system. Most Unix-like operating systems (Linux, macOS) come with `make` pre-installed.
 ## Project setup
 
 Since this project is in alpha we suggest using a sandboxed Python environment to explore its possibilities.
@@ -56,11 +55,6 @@ conda activate ai-data-broker-remover
   - Fedora (dnf)
   - Arch Linux (pacman)
   - openSUSE (zypper)
-- **Windows:** Uses available package managers or downloads installer
-  - Windows Package Manager (winget)
-  - Chocolatey (choco)
-  - Scoop (scoop)
-  - Manual download fallback
 
 ## Data Broker Remover
 

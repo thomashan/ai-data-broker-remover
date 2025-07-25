@@ -24,12 +24,6 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v4
 
-    - name: Set up QEMU for ARM64 (Linux only)
-      if: runner.os == 'Linux'
-      uses: docker/setup-qemu-action@v3
-      with:
-        platforms: all
-
     - name: Run make setup (Install Miniforge)
       # Override default shell for this step as conda is not yet installed
       shell: bash
@@ -58,16 +52,18 @@ jobs:
         conda --version
         conda info | grep "conda-forge"
 
-    - name: Create Conda Environment and Run Tests
+    - name: Create Conda Environment
+      shell: bash
       run: |
         make create-conda-env
         
-        # Activate the environment to run tests
-        conda activate ai-data-broker-remover
-        
         echo "--- Verifying environment ---"
-        conda env list | grep "ai-data-broker-remover"
-        python --version | grep "3.13"
-        
-        echo "--- Environment is activated. Running tests... ---"
-        # Add your actual test commands here
+        conda run -n ai-data-broker-remover conda env list | grep "ai-data-broker-remover"
+        conda run -n ai-data-broker-remover python --version | grep "3.13"
+
+    - name: Run Tests with uv
+      shell: bash
+      run: |
+        conda run -n ai-data-broker-remover which uv
+        conda run -n ai-data-broker-remover which pytest
+        conda run -n ai-data-broker-remover uv run pytest
