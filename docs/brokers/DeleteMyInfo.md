@@ -9,7 +9,7 @@ DeleteMyInfo states that it removes your personal information from "all major da
 
 DeleteMyInfo uses a mix of automated scans and manual verification to remove personal information from all known data brokers, people-search websites, and platforms.
 
-## Example PDF
+## Example PDF Broker Report
 https://deletemyinfo.com/storage/2024/07/DMI-Sample-Report.pdf
 
 * peoplefinders
