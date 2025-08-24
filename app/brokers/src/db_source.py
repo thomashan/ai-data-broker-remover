@@ -1,5 +1,6 @@
 from data_source import DataSource
 
+
 class DbSource(DataSource):
     def get_brokers(self, url: str) -> list[str]:
         # Dummy implementation for database source, url can be a connection string

@@ -5,3 +5,4 @@ dependencies:
   - pytest=8.4.1
   - python=3.12
   - uv=0.8.11
+  - black=25.1.0
