@@ -59,7 +59,7 @@ jobs:
         
         echo "--- Verifying environment ---"
         conda run -n ai-data-broker-remover conda env list | grep "ai-data-broker-remover"
-        conda run -n ai-data-broker-remover python --version | grep "3.13"
+        conda run -n ai-data-broker-remover python --version | grep "3.12"
 
     - name: Run Tests with uv
       shell: bash

@@ -67,7 +67,7 @@ setup:
 		conda --version; \
 	fi
 
-# Create conda environment with Python 3.13
+# Create conda environment with Python 3.12
 create-conda-env:
 	@echo "Creating conda environment 'ai-data-broker-remover' from environment.yml..."
 	@if conda env list | grep -q "ai-data-broker-remover"; then \
