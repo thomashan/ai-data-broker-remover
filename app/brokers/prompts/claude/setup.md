@@ -2,38 +2,53 @@
 
 ## Prerequisites
 
-1. **Install Ollama**
-   ```bash
-   # Install Ollama (macOS/Linux)
-   curl -fsSL https://ollama.ai/install.sh | sh
-   
-   # Or download from https://ollama.ai for Windows
-   ```
+* Ollama 0.1.7
 
-2. **Pull Required Model**
-   ```bash
-   ollama pull llama3.1:8b
-   # Or use a different model like:
-   # ollama pull llama3.2:3b  (lighter)
-   # ollama pull codellama:7b (code-focused)
-   ```
+## Installation
+
+### Macos
+
+```
+brew install ollama
+```
+
+### Linux
+
+For linux no installation is required, just run the docker command below.
+
+```
+docker run -d --gpus=all -v ollama:/root/.ollama -p 11434:11434 --name ollama ollama/ollama
+```
+
+## Pull Required Model
+
+```
+ollama pull llama3.1:8b
+# Or use a different model like:
+# ollama pull llama3.2:3b  (lighter)
+# ollama pull codellama:7b (code-focused)
+```
 
 ## Installation Steps
 
 ### 1. Create Project Directory
+
 ```bash
 mkdir data-broker-agent
 cd data-broker-agent
 ```
 
 ### 2. Create Virtual Environment
+
 ```bash
 python -m venv venv
 source venv/bin/activate  # On Windows: venv\Scripts\activate
 ```
 
 ### 3. Create Requirements File
+
 Create `requirements.txt`:
+
 ```txt
 crewai==0.41.1
 crewai-tools==0.4.26
@@ -50,12 +65,15 @@ lxml==4.9.3
 ```
 
 ### 4. Install Dependencies
+
 ```bash
 pip install -r requirements.txt
 ```
 
 ### 5. Create Environment Configuration
+
 Create `.env` file:
+
 ```bash
 # Ollama Configuration
 OLLAMA_BASE_URL=http://localhost:11434
@@ -77,6 +95,7 @@ MAX_RETRIES=3
 ```
 
 ### 6. Project Structure
+
 ```
 data-broker-agent/
 ├── main.py                 # Main agent code
@@ -91,16 +110,19 @@ data-broker-agent/
 ## Running the Agent
 
 ### 1. Start Ollama Server
+
 ```bash
 ollama serve
 ```
 
 ### 2. Run the Agent
+
 ```bash
 python main.py
 ```
 
 The agent will present a menu with options:
+
 - **Option 1**: Run discovery cycle once (great for testing)
 - **Option 2**: Run continuous monitoring every 6 hours
 - **Option 3**: View current database contents
@@ -108,6 +130,7 @@ The agent will present a menu with options:
 - **Option 5**: Exit
 
 ### 3. First Run Recommendations
+
 1. Start with **Option 4** to test all tools work correctly
 2. Then try **Option 1** to run a single discovery cycle
 3. Check **Option 3** to see discovered brokers
@@ -116,14 +139,18 @@ The agent will present a menu with options:
 ## Configuration Options
 
 ### Customizing Search Terms
+
 Edit the discovery task in `main.py` to add your own search terms:
+
 ```python
 # In discovery_task description, modify search terms:
 "Search for terms like: 'data broker', 'people search', 'your custom term'"
 ```
 
 ### Adjusting Schedule
+
 Change the monitoring frequency in the main function:
+
 ```python
 # Current: every 6 hours
 schedule.every(6).hours.do(run_scheduled_agent)
@@ -135,7 +162,9 @@ schedule.every().monday.do(run_scheduled_agent)  # Weekly on Monday
 ```
 
 ### Using Different Models
+
 Update your `.env` file:
+
 ```bash
 # For faster, lighter model:
 OLLAMA_MODEL=llama3.2:3b
@@ -150,6 +179,7 @@ OLLAMA_MODEL=llama3.1:70b
 ## Data Output Format
 
 The agent stores discovered brokers in `data_brokers.json` with this structure:
+
 ```json
 [
   {
@@ -158,7 +188,10 @@ The agent stores discovered brokers in `data_brokers.json` with this structure:
     "category": "People search websites",
     "description": "Short summary of services",
     "country": "US",
-    "regulations": ["GDPR", "CCPA"],
+    "regulations": [
+      "GDPR",
+      "CCPA"
+    ],
     "opt_out_url": "https://example.com/opt-out",
     "created_timestamp": "2024-12-19 10:30:00",
     "updated_timestamp": "2024-12-19 15:45:00",
@@ -170,7 +203,9 @@ The agent stores discovered brokers in `data_brokers.json` with this structure:
     "last_monitored_timestamp": "2024-12-19 15:45:00",
     "last_monitored_duration": "00:00:15",
     "source": "DuckDuckGo search",
-    "aliases": ["old-domain.com"],
+    "aliases": [
+      "old-domain.com"
+    ],
     "notes": "Additional context about the broker"
   }
 ]
@@ -179,7 +214,9 @@ The agent stores discovered brokers in `data_brokers.json` with this structure:
 ## Extending the Agent
 
 ### Adding New Search Sources
+
 1. **Create new search method** in `WebSearchTool`:
+
 ```python
 def _search_bing(self, query: str, num_results: int) -> List[Dict]:
     # Implement Bing search API
@@ -187,6 +224,7 @@ def _search_bing(self, query: str, num_results: int) -> List[Dict]:
 ```
 
 2. **Add to search execution**:
+
 ```python
 # In WebSearchTool._run method:
 bing_results = self._search_bing(query, num_results)
@@ -194,7 +232,9 @@ results.extend(bing_results)
 ```
 
 ### Adding New Categories
+
 Update the `CategoryClassificationTool` with new categories:
+
 ```python
 categories = {
     # Existing categories...
@@ -205,12 +245,14 @@ categories = {
 ```
 
 ### Custom MCP Integration
+
 To integrate with MCP servers, add this tool:
+
 ```python
 class MCPTool(BaseTool):
     name: str = "mcp_search"
     description: str = "Search using MCP server"
-    
+
     def _run(self, query: str) -> str:
         # Connect to your MCP server
         # Send search request
@@ -223,27 +265,35 @@ class MCPTool(BaseTool):
 ### Common Issues
 
 **1. Ollama Connection Error**
+
 ```
 Error: Failed to connect to Ollama
 ```
+
 **Solution**: Make sure Ollama is running: `ollama serve`
 
 **2. Model Not Found**
+
 ```
 Error: Model not available
 ```
+
 **Solution**: Pull the model: `ollama pull llama3.1:8b`
 
 **3. Rate Limiting**
+
 ```
 Error: Too many requests
 ```
+
 **Solution**: Increase `SEARCH_DELAY` in `.env` file
 
 **4. Permission Denied on Data File**
+
 ```
 Error: Cannot write to data_brokers.json
 ```
+
 **Solution**: Check file permissions and ensure directory is writable
 
 ### Performance Tips
@@ -256,6 +306,7 @@ Error: Cannot write to data_brokers.json
 ### Monitoring Performance
 
 Check the logs for performance metrics:
+
 ```bash
 # View main log
 tail -f data_broker_agent.log
@@ -270,15 +321,18 @@ grep ERROR data_broker_agent.log
 ## Advanced Features
 
 ### Database Export
+
 Add this function to export data to CSV:
+
 ```python
 import csv
 import json
 
+
 def export_to_csv():
     with open('data_brokers.json', 'r') as f:
         data = json.load(f)
-    
+
     with open('data_brokers.csv', 'w', newline='') as f:
         if data:
             writer = csv.DictWriter(f, fieldnames=data[0].keys())
@@ -287,24 +341,30 @@ def export_to_csv():
 ```
 
 ### Custom Notifications
+
 Add Slack/Discord notifications for new discoveries:
+
 ```python
 import requests
+
 
 def notify_new_broker(broker_data):
     webhook_url = "your_webhook_url"
     message = f"🔍 New data broker discovered: {broker_data['name']}"
-    
+
     requests.post(webhook_url, json={"text": message})
 ```
 
 ### Analytics Dashboard
+
 Create a simple web dashboard to view results:
+
 ```python
 from flask import Flask, render_template
 import json
 
 app = Flask(__name__)
+
 
 @app.route('/')
 def dashboard():

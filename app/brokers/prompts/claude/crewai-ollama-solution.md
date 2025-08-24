@@ -55,4 +55,4 @@ The system will continuously discover new brokers, monitor existing ones, and ma
 
 Would you like me to explain any specific part in more detail, or help you customize it for particular search terms or categories?
 
-[Solution](setup-files.md)
+[Solution](setup.md)
