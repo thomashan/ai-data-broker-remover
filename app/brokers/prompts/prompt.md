@@ -1,4 +1,4 @@
-Got it — here’s your **updated self-looping Data Broker Discovery & Monitoring Agent** with the **new output data model** that now includes:
+Got it — here's your **enhanced self-organizing Data Broker Discovery & Monitoring Agent** with a **self-organizing agent network approach** that now includes:
 
 * `regulations` → array instead of single string
 * `aliases` → for tracking multiple known domains
@@ -6,17 +6,17 @@ Got it — here’s your **updated self-looping Data Broker Discovery & Monitori
 
 ---
 
-## **Self-Looping Data Broker Discovery & Monitoring Agent**
+## **Self-Organizing Data Broker Discovery & Monitoring Agent**
 
 ### **1) Goal**
 
-Continuously discover, categorise, and monitor data brokers across the web, keeping structured records for easy opt-out tracking, regulatory awareness, and historical changes.
+Continuously discover, categorize, and monitor data brokers across the web using a self-organizing network of specialized agents, keeping structured records for easy opt-out tracking, regulatory awareness, and historical changes.
 
 ---
 
 ### **2) Continuous Search Scope**
 
-The agent should:
+The agent network should:
 
 * Continuously search for **all types of data brokers**:
     * People search websites
@@ -39,7 +39,33 @@ The agent should:
 
 ---
 
-### **3) Output Data Model**
+### **3) Self-Organizing Agent Network Architecture**
+
+The system implements a **self-organizing network of agents** that dynamically form collaborations based on task requirements and resource availability:
+
+#### **Agent Types**
+* **Discovery Agents**: Specialize in finding new data brokers through various sources
+* **Deduplication Agents**: Handle identification and merging of duplicate broker entries
+* **Crawling Agents**: Specialize in extracting detailed information from broker websites
+* **Monitoring Agents**: Continuously check broker sites for changes in opt-out links
+* **Classification Agents**: Categorize brokers and update classifications based on new information
+* **Coordination Agents**: Facilitate communication and collaboration between specialized agents
+
+#### **Dynamic Collaboration**
+* Agents dynamically form task-specific collaborations based on workload and expertise
+* Resource-aware task distribution ensures optimal utilization of local computing resources
+* Emergent behavior allows the network to discover efficient processing patterns over time
+* Fault-tolerant design ensures system resilience even when individual agents fail
+
+#### **Agent Communication & Coordination**
+* Agents communicate through **Model Context Protocol (MCP)** for state sharing and task coordination
+* Shared memory structures maintain global state while allowing local decision-making
+* Asynchronous messaging enables scalable communication without blocking operations
+* Adaptive protocols allow agents to modify communication patterns based on network conditions
+
+---
+
+### **4) Output Data Model**
 
 ```json
 {
@@ -73,7 +99,7 @@ The agent should:
 
 ---
 
-### **4) Agent Loop Logic**
+### **5) Agent Loop Logic**
 
 **Loop Trigger**: Continuously search for new search results by comparing previous results with current results.
 
@@ -123,7 +149,45 @@ The agent should:
 
 ---
 
-### **5) Persistence Rules**
+### **6) Self-Organization Mechanisms**
+
+#### **Adaptive Resource Management**
+* Agents monitor local system resources (CPU, memory, network) and adapt their behavior accordingly
+* Dynamic scaling of agent instances based on workload demands
+* Load balancing across available computing resources
+* Energy-efficient operation modes for battery-powered devices
+
+#### **Emergent Behavior Patterns**
+* Agents learn from historical performance data to optimize task allocation
+* Network topology evolves based on successful collaboration patterns
+* Collective decision-making for complex tasks that require multiple agent types
+* Self-optimization of communication protocols based on network performance
+
+#### **Resilience & Fault Tolerance**
+* Automatic failover when agents become unresponsive
+* Redundant processing for critical tasks
+* Graceful degradation when system resources are constrained
+* Self-healing mechanisms to restore normal operation after failures
+
+---
+
+### **7) Local LLM & MCP Integration**
+
+#### **Local LLM Usage**
+* All AI processing runs on locally-hosted LLMs (e.g., Llama3 via Ollama)
+* Context-aware prompt optimization for different agent types
+* Efficient token usage to minimize computational overhead
+* Offline operation capabilities with no external API dependencies
+
+#### **Model Context Protocol (MCP)**
+* State persistence between agent interactions
+* Context sharing for collaborative decision-making
+* Memory management to prevent resource exhaustion
+* Version control for shared knowledge bases
+
+---
+
+### **8) Persistence Rules**
 
 * Save in data in either JSON or persistent DB depending on app mode.
 * Maintain backups and historical diffs.
@@ -131,16 +195,21 @@ The agent should:
 
 ---
 
-### **6) KPIs**
+### **9) KPIs**
 
 * New brokers per week
 * Updated brokers per week
 * Median monitoring cycle time
 * % with valid opt-out URL
+* Network efficiency metrics (agent collaboration success rate)
+* Resource utilization statistics
 
 ---
 
-If you want, I can now **add a "change detection" module** to this spec so the agent automatically logs *what exactly* changed between cycles — perfect for catching stealthy opt-out page removals or domain swaps. That
-would make it much more resilient.
+### **10) Complexity Management**
 
-Do you want me to add that?
+* Modular design allows for incremental system enhancements
+* Predictable behavior patterns through defined agent interaction protocols
+* Comprehensive testing framework for validating agent network behavior
+* Monitoring and observability tools for debugging emergent behaviors
+* Documentation of common collaboration patterns for system understanding
