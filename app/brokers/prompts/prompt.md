@@ -67,7 +67,7 @@ The agent should:
     "example.org",
     "example.net"
   ],
-  "notes": "Additional information about the broker.",
+  "notes": "Additional information about the broker."
 }
 ```
 
@@ -75,7 +75,7 @@ The agent should:
 
 ### **4) Agent Loop Logic**
 
-**Loop Trigger**: Runs on schedule (e.g., every 6 hours) or triggered by new search results.
+**Loop Trigger**: Continuously search for new search results by comparing previous results with current results.
 
 #### **Step 1 — Discovery**
 
