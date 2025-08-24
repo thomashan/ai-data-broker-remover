@@ -2,5 +2,16 @@
 name = "brokers"
 version = "0.1.0"
 
+dependencies = [
+    "crewai",
+    "langchain-community",
+    "pytest-mock",
+    "pytest-asyncio",
+    "httpx",
+    "beautifulsoup4",
+    "lxml",
+    "requests",
+]
+
 [tool.pytest.ini_options]
 pythonpath = ["src"]
