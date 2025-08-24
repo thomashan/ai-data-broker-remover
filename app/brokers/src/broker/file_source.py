@@ -1,4 +1,4 @@
-from data_source import DataSource
+from broker.data_source import DataSource
 
 
 class FileSource(DataSource):

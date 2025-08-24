@@ -1,7 +1,7 @@
-from data_source import DataSource
+from broker.data_source import DataSource
 
 
-class InMemSource(DataSource):
+class DbSource(DataSource):
     def get_brokers(self, url: str) -> list[str]:
         # Dummy implementation for database source, url can be a connection string
         print(f"Connecting to database at {url} (dummy implementation)")
