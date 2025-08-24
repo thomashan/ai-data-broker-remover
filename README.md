@@ -46,7 +46,7 @@ Once you have restarted your terminal or run the `eval` command, you can create 
 make create-conda-env
 ```
 
-This will create a conda environment named `ai-data-broker-remover` with Python 3.13.
+This will create a conda environment named `ai-data-broker-remover` with Python 3.12.
 
 ### Step 3: Activate the Conda Environment
 
