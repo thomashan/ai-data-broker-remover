@@ -1,11 +1,3 @@
-Got it — here’s your **updated self-looping Data Broker Discovery & Monitoring Agent** with the **new output data model** that now includes:
-
-* `regulations` → array instead of single string
-* `aliases` → for tracking multiple known domains
-* `notes` → for any extra context
-
----
-
 ## **Self-Looping Data Broker Discovery & Monitoring Agent**
 
 ### **1) Goal**
@@ -137,10 +129,3 @@ The agent should:
 * Updated brokers per week
 * Median monitoring cycle time
 * % with valid opt-out URL
-
----
-
-If you want, I can now **add a "change detection" module** to this spec so the agent automatically logs *what exactly* changed between cycles — perfect for catching stealthy opt-out page removals or domain swaps. That
-would make it much more resilient.
-
-Do you want me to add that?
